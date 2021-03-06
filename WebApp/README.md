@@ -1,4 +1,6 @@
-# Webclient
+# WebApp
+Is an Angular App that uses the Api app as backend, for the app to work correclty the Api app must be running.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
 
