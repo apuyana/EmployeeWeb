@@ -1,0 +1,43 @@
+<h1>
+  Get employees
+</h1>
+<div class="searchEmployees">
+  <form id='tuitionForm' [formGroup]="employeeForm">
+    <div>
+      <label for="inputEmployeeId"> Employee Id: </label>
+      <div class="getEmployeesPanel">
+        <input id="inputEmployeeId" placeholder="Employee id" maxlength="20" formControlName="employeeId">
+        <button (click)="queryEmployees()">Get Employees</button>
+      </div>
+      <div *ngIf="hasError && submitAttempt">
+        <p class="validation-error">The employee id is not valid.</p>
+      </div>
+      <div *ngIf="isWorking">Loading...</div>
+    </div>
+  </form>
+
+  <div *ngIf="employeeList && employeeList.length > 0 " class="employeeList">
+    <div class="divTable">
+      <div class="divTableBody">
+        <div class="divTableRow divHeadRow">
+          <div class="divTableCell">Employee ID</div>
+          <div class="divTableCell">Employee Name</div>
+          <div class="divTableCell">Employee Role Name</div>
+          <div class="divTableCell">Employee Annual Salary</div>
+        </div>
+        <div *ngFor="let employeeItem of employeeList;" class="divTableRow">
+          <div class="divTableCell">{{ employeeItem.Id }}</div>
+          <div class="divTableCell">{{ employeeItem.Name }}</div>
+          <div class="divTableCell">{{ employeeItem.RoleName }}</div>
+          <div class="divTableCell">$ {{ employeeItem.AnnualSalary }} USD</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="employeeList && employeeList.length == 0 " class="employeeListEmpty">
+    <h2>No employees found</h2>
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>
